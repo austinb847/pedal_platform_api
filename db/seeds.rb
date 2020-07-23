@@ -23,7 +23,7 @@ csv.each do |row|
   t.quantity = row['quantity']
   t.featured = row['featured']
   t.image_url = row['image_url']
-  t.type = row['type']
+  t.kind = row['kind']
   t.category = row['category']
   t.country_origin = row['country_origin']
   t.save
