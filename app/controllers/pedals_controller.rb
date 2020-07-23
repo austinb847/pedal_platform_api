@@ -9,6 +9,11 @@ class PedalsController < ApplicationController
     json_response(@pedal)
   end
 
+  def create
+    @pedal = Pedal.create!(pedal_params)
+    json_response(@pedal, :created)
+  end
+
 
   private
   def pedal_params
