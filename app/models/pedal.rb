@@ -1,0 +1,3 @@
+class Pedal < ApplicationRecord
+  
+end
