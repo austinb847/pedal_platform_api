@@ -23,6 +23,15 @@ class PedalsController < ApplicationController
     end
   end
 
+  def destroy
+    @pedal = Pedal.find(params[:id])
+    if @pedal.destroy!
+      render status: 200, json: {
+        message: "This Pedal has been deleted Successfully."
+      }
+    end
+  end
+
 
   private
   def pedal_params
