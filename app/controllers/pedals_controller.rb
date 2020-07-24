@@ -32,6 +32,11 @@ class PedalsController < ApplicationController
     end
   end
 
+  def random
+    @pedal = Pedal.random_pedal
+    json_response(@pedal)
+  end
+
 
   private
   def pedal_params
