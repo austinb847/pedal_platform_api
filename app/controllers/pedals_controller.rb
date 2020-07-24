@@ -37,6 +37,31 @@ class PedalsController < ApplicationController
     json_response(@pedal)
   end
 
+  def value
+    @pedal = Pedal.value
+    json_response(@pedal)
+  end
+
+  def standard
+    @pedal = Pedal.standard
+    json_response(@pedal)
+  end
+
+  def premium
+    @pedal = Pedal.premium
+    json_response(@pedal)
+  end
+
+  def featured
+    @pedal = Pedal.featured
+    json_response(@pedal)
+  end
+
+  def recent
+    @pedal = Pedal.ten_most_recent
+    json_response(@pedal)
+  end
+
 
   private
   def pedal_params
