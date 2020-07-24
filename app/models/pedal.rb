@@ -14,4 +14,8 @@ class Pedal < ApplicationRecord
   scope :premium, -> { where(kind: "premium")}
   scope :featured, -> { where(featured: "true")}
   scope :ten_most_recent, -> { order(created_at: :desc).limit(10)}
+
+
+  scope :search_by_name, -> (name) { where("LOWER(name) like ?", "%#{name}%")}
+  scope :search_by_brand, -> (brand) { where("LOWER(brand) like ?", "%#{brand}%")}
 end

@@ -62,10 +62,29 @@ class PedalsController < ApplicationController
     json_response(@pedal)
   end
 
+  def search
+    @pedals = Pedal.where(nil)
+    search_params(params).each do |key, value|
+     @pedals = @pedals.public_send("search_by_#{key}", value.downcase) if value.present?
+    end
+ 
+    if @pedals.length == 0
+     render status: 200, json: {
+       message: "No pedals based on your search."
+       }
+     else
+       json_response(@pedals)
+     end
+   end
+
 
   private
   def pedal_params
     params.permit(:name, :price, :brand, :description, :quantity, :featured, :image_url, :kind, :category, :country_origin)
+  end
+
+  def search_params(params)
+    params.slice(:name, :brand)
   end
 
 end
