@@ -14,6 +14,15 @@ class PedalsController < ApplicationController
     json_response(@pedal, :created)
   end
 
+  def update
+    @pedal = Pedal.find(params[:id])
+    if @pedal.update!(pedal_params)
+      render status: 200, json: {
+        message: "Pedal Successfully Updated."
+      }
+    end
+  end
+
 
   private
   def pedal_params
